@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String userEnteredValue;
     String operationArray[] = {"+", "-", "*", "/"};
 
-
     ArrayList<Score> listOfScores;
     String operationQuestion;
 
@@ -175,6 +174,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int ramdomOperation = random.nextInt(4);
         double result = 0;
 
+
         switch (operationArray[ramdomOperation]){
             case "+":
                 result = (float) operand1 + (float) operand2;
@@ -193,9 +193,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
 
-        rightResult = Math.round(result * 100.0) / 100.0;
+        rightResult = Math.round(result* 100.0) / 100.0;
 
-        operationQuestion = operand1 + operationArray[ramdomOperation]+ operand2 + "= ?";
+        operationQuestion = operand1 + " " + operationArray[ramdomOperation]+ " " + operand2 + " = ?";
         textViewQuestion.setText(operationQuestion);
     }
 
@@ -253,10 +253,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // 3. compare to rightResult
         if (userAnswer == rightResult){
-            resultPhrase = "Right Answer. Click on Generate to try a new question";
+            resultPhrase = "Right Answer!";
             isAnswerCorret = true;
         } else {
-            resultPhrase = "Wrong Answer. Click on Generate to try again";
+            resultPhrase = "Wrong Answer!";
             isAnswerCorret = false;
         }
         textViewQuestion.setText(resultPhrase);
@@ -283,36 +283,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
     }
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-
     }
 
     @Override
     public void afterTextChanged(Editable s) {
-        try {
-            int userAnswer = Integer.parseInt(textViewAnswer.getText().toString());
-            if (userAnswer > 108) {
-                Toast toastRange = Toast.makeText(this, "The total should be <= 108", Toast.LENGTH_SHORT);
-                toastRange.setGravity(Gravity.TOP|Gravity.CENTER, 0, 500);
-                toastRange.show();
-
-                btnValidate.setEnabled(false);
-            } else
-                btnValidate.setEnabled(true);
-        } catch (Exception e) {
-            // don't need to validate for text because there is no way to enter a text
-            Toast toastException = Toast.makeText(this, "Enter a number data type", Toast.LENGTH_SHORT);
-            toastException.setGravity(Gravity.TOP|Gravity.CENTER, 0, 500);
-            toastException.show();
-        }
-
     }
 
     @Override

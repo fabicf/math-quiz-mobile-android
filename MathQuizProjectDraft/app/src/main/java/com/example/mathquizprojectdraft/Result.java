@@ -49,7 +49,6 @@ public class Result extends AppCompatActivity implements AdapterView.OnItemSelec
         initialize();
         getMyIntent();
         initializeListView();
-        initializeListView();
         scorePercentage();
     }
 
@@ -93,15 +92,15 @@ public class Result extends AppCompatActivity implements AdapterView.OnItemSelec
                 qtyOfRight++;
             }
         }
-        percentage = qtyOfRight/listOfScores.size();
-        percentage = percentage * 100;
+        percentage = (qtyOfRight/listOfScores.size())*100;
+        int percentage1 = (int) Math.round(percentage);
 
 
-        strPercentage = String.valueOf(percentage);
+        strPercentage = String.valueOf(percentage1) + " %";
         //String strPercentage = "qty of right: " + qtyOfRight + "array size:" + listOfScores.size();
 
-        Toast.makeText(this, strPercentage, Toast.LENGTH_SHORT).show();
-        textViewPercentage.setText(strPercentage + " %");
+
+        textViewPercentage.setText(strPercentage);
     }
 
     @Override
@@ -149,6 +148,8 @@ public class Result extends AppCompatActivity implements AdapterView.OnItemSelec
     private void goBack(){
         editTextName = findViewById(R.id.editTextName);
         String name = editTextName.getText().toString(); // validate if it is empty
+
+        if (name.isEmpty()){name = "Unidentified User";}
         String strReturnNameScore = name + " " + strPercentage;
 
         Intent intent = new Intent();

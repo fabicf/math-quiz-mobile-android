@@ -41,12 +41,12 @@ public class Score implements Serializable, Comparable {
     public String toString() {
         String rightWrong;
         if (isAnswerCorrect) {
-            rightWrong = "right";
+            rightWrong = "Right";
         } else {
-            rightWrong = "wrong";
+            rightWrong = "Wrong";
         }
 
-        return question + ", " + answer + ", " + rightWrong;
+        return question + ",      " + answer + ",     " + rightWrong;
     }
 
 
