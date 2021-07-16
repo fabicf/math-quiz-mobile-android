@@ -10,21 +10,21 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:text="Your Results and Score"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="center"
         android:textSize="20dp"
         android:textColor="@color/color_dark"
         android:textStyle="bold"
-        android:gravity="center_vertical"/>
+        android:gravity="center_vertical|center_horizontal"
+        android:background="@drawable/text_view_title"/>
 
     <Spinner
         android:id="@+id/spinnerResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        
+
         />
 
     <ListView
