@@ -49,7 +49,6 @@ public class Score implements Serializable, Comparable {
         return question + ",      " + answer + ",     " + rightWrong;
     }
 
-
     @Override
     public int compareTo(Object o) {
         if ((isAnswerCorrect() && ((Score) o).isAnswerCorrect) || (!isAnswerCorrect() && !((Score) o).isAnswerCorrect)) {

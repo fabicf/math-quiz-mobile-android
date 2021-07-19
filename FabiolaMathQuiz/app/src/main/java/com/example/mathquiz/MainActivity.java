@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 generateQuestion();
                 break;
             case R.id.buttonValidate:
-                validadeAnswer();
+                validateAnswer();
                 break;
             case R.id.buttonClear:
                 clearFields();
@@ -171,7 +171,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int operand2 = random.nextInt(10);
         int ramdomOperation = random.nextInt(4);
         double result = 0;
-
 
         switch (operationArray[ramdomOperation]){
             case "+":
@@ -197,7 +196,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textViewQuestion.setText(operationQuestion);
     }
 
-    private void validadeAnswer(){
+    private void validateAnswer(){
         String resultPhrase;
         // 1. check if is empty
         if (userEnteredValue.isEmpty()){
@@ -208,13 +207,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // (minus "-")
         if (userEnteredValue.contains("-")){
-            // check if the minus is in the position one, otherwise will be wrong
             if (userEnteredValue.charAt(0) != '-'){
                 resultPhrase = "Please enter a valid value - minus in wrong place";
                 textViewQuestion.setText(resultPhrase);
                 return;
             }
-            // check if there is more than one minus
+
             int minusCount = 0;
             for (int i = 0; i<userEnteredValue.length(); i++){
                 if (userEnteredValue.charAt(i) == '-'){
@@ -228,7 +226,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
-        // (dot ".") check if there is more than one dot
+        // (dot ".")
         if (userEnteredValue.contains(".")){
             int dotCount = 0;
             for (int i = 0; i<userEnteredValue.length(); i++){
@@ -242,13 +240,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return;
             }
         }
-        // 2. parse to double
+
         double userAnswer = Math.round((Double.parseDouble(userEnteredValue)) * 100.0) / 100.0;
         String userAnswerString = String.valueOf(userAnswer);
 
         boolean isAnswerCorret;
 
-        // 3. compare to rightResult
         if (userAnswer == rightResult){
             resultPhrase = "Right Answer!";
             isAnswerCorret = true;
@@ -276,7 +273,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this, Result.class);
         intent.putExtra("intentExtra", bundle);
         startActivityForResult(intent, REQUEST_CODE1);
-
     }
 
     @Override

@@ -53,7 +53,6 @@ public class Result extends AppCompatActivity implements AdapterView.OnItemSelec
     private void initialize(){
         textViewPercentage = findViewById(R.id.textViewPercentage);
 
-
         spinnerResult = findViewById(R.id.spinnerResult);
         spinnerResult.setOnItemSelectedListener(this);
 
@@ -65,7 +64,6 @@ public class Result extends AppCompatActivity implements AdapterView.OnItemSelec
 
         sortScoreBtn = findViewById(R.id.buttonSort);
         sortScoreBtn.setOnClickListener(this);
-
     }
 
     private void getMyIntent(){
@@ -124,7 +122,6 @@ public class Result extends AppCompatActivity implements AdapterView.OnItemSelec
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
     @Override
